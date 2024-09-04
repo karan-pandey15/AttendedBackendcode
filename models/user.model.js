@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   category: { type: String, required: true },
-  images: [{ type: String, required: true }] // Changed to an array of strings
+  images: [{ type: String, required: true }]  
 });
 const userSchema = new mongoose.Schema(
   {
