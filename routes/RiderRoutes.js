@@ -4,7 +4,7 @@
  
 import express from 'express'; 
 import authMiddleware from '../middlewares/authMiddleware.js';
-import { loginRider, registerRider, upload } from '../controllers/riderController.js';
+import { deleteRider, getAllRiders, loginRider, registerRider, upload } from '../controllers/riderController.js';
 
  
 const router = express.Router();
@@ -14,6 +14,12 @@ router.post('/register', upload.fields([{ name: 'marksheet' }, { name: 'image' }
 
 // Route for user login
 router.post('/login', loginRider);  
+
+// Route to get all riders
+router.get('/ridersalldata', getAllRiders);
+
+// Route to delete a rider
+router.delete('/ridersalldata/:id', deleteRider);
 
 // Route to get authenticated user's information
 router.get('/user', authMiddleware, (req, res) => {

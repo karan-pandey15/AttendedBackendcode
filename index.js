@@ -1,20 +1,15 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import db from "./database/db.js";
-import router from "./routes/user.route.js";
+import db from "./database/db.js"; 
 import http from 'http';
 import { Server } from 'socket.io';
 
 import riderRoutes from "./routes/RiderRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import otpRoutes from "./routes/otpRoutes.js";
-
-
- 
-
-
-
+import rideRoutes from "./routes/rideRoutes.js" 
+// app.use('/api', userRoutes);
 // const productRoutes = require('./routes/product.js');
 import productRoutes from "./routes/product.js";
 
@@ -32,7 +27,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // CORS configuration
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://marasimpex.com",
   methods: "GET, POST, PUT, PATCH, DELETE, HEAD",
   credentials: true,
 };
@@ -60,9 +55,17 @@ app.use("/api/products", productRoutes);
 
 app.use('/api/users', riderRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api', userRoutes);
 app.use('/api/auth', riderRoutes);
+app.use('/api', riderRoutes);
+
 app.use('/api/auth', userRoutes);
+
 app.use('/api/otp', otpRoutes);  
+app.use("/api/rides",rideRoutes );
+app.use("/api",rideRoutes );
+
+
 
 
 
